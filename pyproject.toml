@@ -1,0 +1,74 @@
+[project]
+dependencies = []
+description = "PPanel"
+name = "ppanel"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+version = "0.1.0"
+
+[dependency-groups]
+dev = [
+  "codespell",
+  "deptry",
+  "dotenv-linter",
+  "mypy[faster-cache]",
+  "ruff",
+  "shellcheck-py",
+  "slotscheck",
+  "toml-sort",
+  "yamlfix",
+]
+
+[tool.codespell]
+check-filenames = true
+quiet-level = 3
+
+[tool.deptry.per_rule_ignores]
+DEP001 = ["src"]
+
+[tool.mypy]
+cache_dir = ".cache/mypy"
+explicit_package_bases = true
+extra_checks = true
+local_partial_types = true
+pretty = true
+python_version = "3.13"
+show_column_numbers = true
+show_error_code_links = true
+strict = true
+strict_bytes = true
+strict_concatenate = true
+strict_equality = true
+warn_unreachable = true
+
+[tool.ruff]
+cache-dir = ".cache/ruff"
+line-length = 99
+preview = true
+show-fixes = true
+target-version = "py313"
+lint.ignore = [
+  "CPY", # flake8-copyright
+  "D", # pydocstyle
+]
+lint.select = ["ALL"]
+lint.flake8-builtins.strict-checking = true
+lint.flake8-import-conventions.aliases = {}
+lint.flake8-self.ignore-names = []
+lint.flake8-tidy-imports.ban-relative-imports = "all"
+lint.flake8-type-checking.exempt-modules = []
+lint.flake8-type-checking.strict = true
+lint.isort.lines-after-imports = 2
+lint.pep8-naming.ignore-names = []
+lint.pylint.allow-magic-value-types = []
+
+[tool.tomlsort]
+all = true
+sort_first = ["project"]
+trailing_comma_inline_array = true
+
+[tool.uv]
+cache-dir = ".cache/uv"
+link-mode = "copy"
+package = false
+preview = true
